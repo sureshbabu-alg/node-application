@@ -59,6 +59,7 @@ phases:
 artifacts:
     files:
       - template.yaml
+      - lambda.zip
       # - target/*.war
 
 cache:
