@@ -54,3 +54,7 @@ phases:
       # - cat imagedefinitions.json
 artifacts:
     files: template.yaml
+
+cache:
+  paths:
+    - '~/.m2/**/*'
