@@ -13,6 +13,8 @@ phases:
       - apt install build-essential
       - apt-get install -y manpages-dev
       - apt-get install -y software-properties-common
+      - apt-add-repository --yes --update ppa:ansible/ansible
+      - apt-get install -y ansible
       - add-apt-repository ppa:openjdk-r/ppa
       - apt-get update
       - apt-get install -y openjdk-8-jdk
