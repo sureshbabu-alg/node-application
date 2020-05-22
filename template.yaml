@@ -7,6 +7,7 @@ Description: "test"
 Parameters:
   RoleName:
     Type: String
+    Default: "test-role-node"
 
 Resources:
   TestIAMRole:
