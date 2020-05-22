@@ -47,6 +47,7 @@ phases:
       # - echo ${CODEBUILD_SRC_DIR}
       # - aws s3 cp ${CODEBUILD_SRC_DIR}/target/*.war s3://${S3_BUCKET}/artifacts/
       - make
+      - aws s3 cp ${CODEBUILD_SRC_DIR}/lambda.zip s3://${S3_BUCKET}/zips/
   post_build:
     commands:
       - echo Build completed on `date`
