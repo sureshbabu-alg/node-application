@@ -62,7 +62,7 @@ artifacts:
       - lambda.zip
       - config.json
       - scripts/test_function.py
-      # - target/*.war
+      ## - target/*.war
 
 cache:
   paths:
