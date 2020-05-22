@@ -39,13 +39,14 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...
-      # - docker build -t $REPOSITORY_URI:latest .
-      # - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
-      - mvn clean package
-      - echo ${CODEBUILD_SOURCE_REPO_URL}
-      - echo ${CODEBUILD_SRC_DIR}
-      - aws s3 cp ${CODEBUILD_SRC_DIR}/target/*.war s3://${S3_BUCKET}/artifacts/
+      # - echo Building the Docker image...
+      # # - docker build -t $REPOSITORY_URI:latest .
+      # # - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      # - mvn clean package
+      # - echo ${CODEBUILD_SOURCE_REPO_URL}
+      # - echo ${CODEBUILD_SRC_DIR}
+      # - aws s3 cp ${CODEBUILD_SRC_DIR}/target/*.war s3://${S3_BUCKET}/artifacts/
+      - make
   post_build:
     commands:
       - echo Build completed on `date`
@@ -58,7 +59,7 @@ phases:
 artifacts:
     files:
       - template.yaml
-      - target/*.war
+      # - target/*.war
 
 cache:
   paths:
