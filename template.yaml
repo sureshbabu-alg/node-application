@@ -89,6 +89,6 @@ Resources:
       Role: !GetAtt TestIAMRole.Arn
       Code:
         S3Bucket: kannanbucket9823577
-        S3Key: node-app/lambda.zip
+        S3Key: zips/lambda.zip
       Runtime: python3.6
       Timeout: 100
