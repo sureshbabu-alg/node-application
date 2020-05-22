@@ -5,7 +5,7 @@ env:
 phases:
   install:
     runtime-versions:
-      # java: openjdk8   ####For Ubuntu standard:4.0 its not supported for more details check "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html" 
+      # java: openjdk8   ####For Ubuntu standard:4.0 its not supported for more details check "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html"
       python: 3.7
       # nodejs: 10
     commands:
@@ -28,6 +28,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - mvn --version
+      - python3 --version
       # - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       # - REPOSITORY_URI=690046498336.dkr.ecr.us-east-1.amazonaws.com/node-app
       # - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
