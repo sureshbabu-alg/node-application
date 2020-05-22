@@ -7,6 +7,9 @@ Description: >
 Metadata:
 
 Parameters:
+  BucketName:
+    Type: String
+    Default: "kannanbucket9823577"
 
 Mappings:
 
@@ -43,7 +46,7 @@ Resources:
       Handler: test_function.lambda_handler
       Runtime: python3.6
       CodeUri:
-        Bucket: kannanbucket9823577
+        Bucket: !Ref BucketName
         Key: node-app/lambda.zip
       Description: test.
       Role: !GetAtt TestIAMRole.Arn
