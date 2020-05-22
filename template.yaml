@@ -81,3 +81,15 @@ Resources:
   #     Description: test.
   #     Role: !GetAtt TestIAMRole.Arn
   #     Timeout: 900
+  # MyLambda:
+  #   Type: 'AWS::Serverless::Function'
+  #   Properties:
+  #     FunctionName: test-function
+  #     Handler: test_function.lambda_handler
+  #     Runtime: python3.6
+  #     CodeUri:
+  #       Bucket: !Ref BucketName
+  #       Key: node-app/lambda.zip
+  #     Description: test.
+  #     Role: !GetAtt TestIAMRole.Arn
+  #     Timeout: 900
