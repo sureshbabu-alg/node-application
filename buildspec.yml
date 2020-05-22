@@ -31,6 +31,7 @@ phases:
       - aws --version
       - mvn --version
       - python3 --version
+      - ansible --version
       # - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       # - REPOSITORY_URI=690046498336.dkr.ecr.us-east-1.amazonaws.com/node-app
       # - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
