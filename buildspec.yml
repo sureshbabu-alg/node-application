@@ -60,6 +60,7 @@ artifacts:
     files:
       - template.yaml
       - lambda.zip
+      - config.json
       # - target/*.war
 
 cache:

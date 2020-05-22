@@ -7,7 +7,6 @@ Description: "test"
 Parameters:
   RoleName:
     Type: String
-    Default: "test-role-node"
   DummName:
     Type: String
     Default: "dummy-role"
