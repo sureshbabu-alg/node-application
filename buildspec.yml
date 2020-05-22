@@ -1,5 +1,7 @@
 version: 0.2
-
+env:
+  variables:
+    S3_BUCKET: "kannanbucket9823577"
 phases:
   install:
     commands:
@@ -35,7 +37,7 @@ phases:
       - mvn clean package
       - echo ${CODEBUILD_SOURCE_REPO_URL}
       - echo ${CODEBUILD_SRC_DIR}
-      - aws s3 cp ${CODEBUILD_SRC_DIR}/target/*.war s3://kannanbucket9823577/artifacts/
+      - aws s3 cp ${CODEBUILD_SRC_DIR}/target/*.war s3://${S3_BUCKET}/artifacts/
   post_build:
     commands:
       - echo Build completed on `date`
