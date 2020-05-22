@@ -7,7 +7,7 @@ Description: "test"
 Parameters:
   RoleName:
     Type: String
-    Default: "kannanbucket9823577"
+    Default: "test-role"
 
 Resources:
   TestIAMRole:
