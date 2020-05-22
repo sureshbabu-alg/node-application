@@ -1,19 +1,13 @@
 ---
 AWSTemplateFormatVersion: "2010-09-09"
 
-Description: >
+Description: "test"
 
-
-Metadata:
 
 Parameters:
   BucketName:
     Type: String
     Default: "kannanbucket9823577"
-
-Mappings:
-
-Conditions:
 
 Resources:
   TestIAMRole:
@@ -51,5 +45,3 @@ Resources:
       Description: test.
       Role: !GetAtt TestIAMRole.Arn
       Timeout: 900
-
-Outputs:
