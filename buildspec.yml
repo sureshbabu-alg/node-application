@@ -2,6 +2,22 @@ version: 0.2
 
 
 phases:
+  install:
+    commands:
+      - apt-get update
+      - apt install build-essential
+      - apt-get install -y manpages-dev
+      - apt-get install -y software-properties-common
+      - add-apt-repository ppa:openjdk-r/ppa
+      - apt-get update
+      - apt-get install -y openjdk-8-jdk
+      - apt-get install -y --no-install-recommends ca-certificates-java
+      - update-ca-certificates -f
+      - dpkg --add-architecture i386
+      - apt-get update
+      - apt-get install -y --force-yes libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1 libqt5widgets5
+      - apt-get --assume-yes install zip maven
+      - pip install --upgrade pip tox twine setuptools wheel coverage cython
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
@@ -16,6 +32,7 @@ phases:
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - mvn clean package
   post_build:
     commands:
       - echo Build completed on `date`
