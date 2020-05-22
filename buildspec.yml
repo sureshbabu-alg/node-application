@@ -5,24 +5,24 @@ env:
 phases:
   install:
     runtime-versions:
-      java: openjdk8
+      # java: openjdk8   ####For Ubuntu standard:4.0 its not supported for more details check "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html" 
       python: 3.7
-      nodejs: 10
+      # nodejs: 10
     commands:
-      # - apt-get update
-      # - apt install build-essential
-      # - apt-get install -y manpages-dev
-      # - apt-get install -y software-properties-common
-      # - add-apt-repository ppa:openjdk-r/ppa
-      # - apt-get update
-      # - apt-get install -y openjdk-8-jdk
-      # - apt-get install -y --no-install-recommends ca-certificates-java
-      # - update-ca-certificates -f
-      # - dpkg --add-architecture i386
-      # - apt-get update
-      # - apt-get install -y --force-yes libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1 libqt5widgets5
+      - apt-get update
+      - apt install build-essential
+      - apt-get install -y manpages-dev
+      - apt-get install -y software-properties-common
+      - add-apt-repository ppa:openjdk-r/ppa
+      - apt-get update
+      - apt-get install -y openjdk-8-jdk
+      - apt-get install -y --no-install-recommends ca-certificates-java
+      - update-ca-certificates -f
+      - dpkg --add-architecture i386
+      - apt-get update
+      - apt-get install -y --force-yes libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1 libqt5widgets5
       - apt-get --assume-yes install zip maven
-      # - pip install --upgrade pip tox twine setuptools wheel coverage cython
+      - pip install --upgrade pip tox twine setuptools wheel coverage cython
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
