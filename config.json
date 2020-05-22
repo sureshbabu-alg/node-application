@@ -1,6 +1,7 @@
 {
   "Parameters" : {
     "RoleName" : "test-role-node",
-    "DummName" : "dummy-role"
+    "DummName" : "dummy-role",
+    "DummName1" : "dummy-role1"
   }
 }
