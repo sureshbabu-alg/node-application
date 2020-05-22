@@ -8,5 +8,5 @@ install:
 package: install
 	cp scripts/* target/ ; \
 	cd target/ ; \
-	zip -r ../lambda.zip * -i "yaml*" "sqlalchemy*" "pymysql*" ;
+	zip -r ../lambda.zip * -i "yaml*" "sqlalchemy*" "pymysql*" "test_function.py" ;
 	python setup.py bdist_egg
