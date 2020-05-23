@@ -46,6 +46,7 @@ phases:
       # - echo ${CODEBUILD_SOURCE_REPO_URL}
       # - echo ${CODEBUILD_SRC_DIR}
       - aws s3 cp ${CODEBUILD_SRC_DIR}/target/*.war s3://${S3_BUCKET}/artifacts/
+      - mv ${CODEBUILD_SRC_DIR}/target/*.war ${CODEBUILD_SRC_DIR}/target/myapp.war
       # - make
       # - aws s3 cp ${CODEBUILD_SRC_DIR}/lambda.zip s3://${S3_BUCKET}/zips/
   post_build:
@@ -61,6 +62,7 @@ phases:
       - chmod 400 ${CODEBUILD_SRC_DIR}/ansible/code_build.pem
       - cd ${CODEBUILD_SRC_DIR}/ansible/
       - ansible all -m ping
+      - ansible-playbook tomcat.yaml
 artifacts:
     files:
       # - template.yaml
