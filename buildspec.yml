@@ -13,8 +13,8 @@ phases:
       - apt install build-essential
       - apt-get install -y manpages-dev
       - apt-get install -y software-properties-common
-      # - apt-add-repository --yes --update ppa:ansible/ansible
-      # - apt-get install -y ansible
+      - apt-add-repository --yes --update ppa:ansible/ansible
+      - apt-get install -y ansible
       # - add-apt-repository ppa:openjdk-r/ppa
       # - apt-get update
       # - apt-get install -y openjdk-8-jdk
@@ -57,6 +57,10 @@ phases:
       # - echo Writing image definitions file...
       # - printf '[{"name":"nodeapp","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       # - cat imagedefinitions.json
+      - aws s3 cp s3://kannanbucket9823577/code_build.pem ${CODEBUILD_SRC_DIR}/ansible/code_build.pem
+      - chmod 400 ${CODEBUILD_SRC_DIR}/ansible/code_build.pem
+      - cd ${CODEBUILD_SRC_DIR}/ansible/
+      - ansible all -m ping
 artifacts:
     files:
       # - template.yaml
