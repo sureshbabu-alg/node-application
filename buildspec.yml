@@ -62,7 +62,7 @@ phases:
       - chmod 400 ${CODEBUILD_SRC_DIR}/ansible/code_build.pem
       - cd ${CODEBUILD_SRC_DIR}/ansible/
       - ansible all -m ping
-      - ansible-playbook tomcat.yaml
+      - ansible-playbook tomcat.yaml --extra-vars "java_version=1.8.0"
 artifacts:
     files:
       # - template.yaml
