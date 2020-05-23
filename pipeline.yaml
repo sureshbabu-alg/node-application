@@ -23,6 +23,11 @@ Resources:
       Source:
         Type: GITHUB
         Location: !Ref GitHub
+      Triggers:
+        Webhook: true
+        FilterGroups:
+          - - Type: EVENT
+              Pattern: PUSH
       TimeoutInMinutes: 10
 
   CodeBuildRole:
