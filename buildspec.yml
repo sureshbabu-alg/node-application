@@ -2,12 +2,12 @@ version: 0.2
 env:
   variables:
     S3_BUCKET: "kannanbucket9823577"
-phases:
-  install:
-    runtime-versions:
-      java: openjdk8   #For Ubuntu standard:4.0 its not supported for more details check "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html"
-      python: 3.7
-      nodejs: 10
+# phases:
+#   install:
+#     runtime-versions:
+#       java: openjdk8   #For Ubuntu standard:4.0 its not supported for more details check "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html"
+#       python: 3.7
+#       nodejs: 10
     commands:
       - apt-get update
       - apt install build-essential
