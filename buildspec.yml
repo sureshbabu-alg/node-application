@@ -1,5 +1,5 @@
 version: 0.2
-env:
+nv:
   variables:
     S3_BUCKET: "kannanbucket9823577"
 phases:
