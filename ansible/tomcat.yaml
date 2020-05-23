@@ -2,7 +2,7 @@
  - hosts: all
    become: true
    vars_files:
-     - vars.yml
+     - ./vars.yaml
    tasks:
      - name: Installing java
        yum:
