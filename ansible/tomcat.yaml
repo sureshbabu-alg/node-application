@@ -1,8 +1,8 @@
 ---
  - hosts: all
    become: true
-   # vars_files:
-   #   - ./vars.yml
+   vars_files:
+     - ${CODEBUILD_SRC_DIR}/ansible/vars.yml
    tasks:
      - name: Installing java
        yum:
@@ -10,58 +10,58 @@
          state: present
        tags:
          - task-1
-     - name:
-       debug:
-         msg: installing java completed
-     - name: Updating java Version
-       alternatives:
-         name: java
-         path: /usr/lib/jvm/jre-{{java_version}}-openjdk.x86_64/bin/java
-       tags:
-         - task-2
-     - name: Updating javac Version
-       alternatives:
-         name: javac
-         path: /usr/lib/jvm/java-{{java_version}}-openjdk.x86_64/bin/javac
-       tags:
-         - task-3
-     - name: Creating Tomcat Group
-       group:
-         name: tomcat
-     - name: Creating Tomcat user
-       user:
-         name: tomcat
-         group: tomcat
-     - name: Dowloading tomcat
-       get_url:
-         url: http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v{{tomcat_version}}/bin/apache-tomcat-{{tomcat_version}}.tar.gz
-         dest: /opt/apache-tomcat-{{tomcat_version}}.tar.gz
-     - name: Extracting Tomcat tar file
-       command: chdir=/usr/share tar xvzf /opt/apache-tomcat-{{tomcat_version}}.tar.gz -C /opt/ creates=/opt/apache-tomcat-{{tomcat_version}}
-     - name: Symlink between repos
-       file:
-         src: /opt/apache-tomcat-{{tomcat_version}}
-         path: /usr/share/tomcat
-         state: link
-     - name: Changing ownership of tomcat
-       file:
-         path: /usr/share/tomcat/
-         owner: tomcat
-         group: tomcat
-         state: directory
-         recurse: yes
-     - name: coping script to init.d repo
-       copy:
-         src: ./tomcat.sh
-         dest: /etc/init.d/tomcat
-         mode: 0755
-       tags:
-         - tag-1
-     - name: Sarting tomcat
-       service:
-         name: tomcat
-         state: started
-         enabled: yes
+     # - name:
+     #   debug:
+     #     msg: installing java completed
+     # - name: Updating java Version
+     #   alternatives:
+     #     name: java
+     #     path: /usr/lib/jvm/jre-{{java_version}}-openjdk.x86_64/bin/java
+     #   tags:
+     #     - task-2
+     # - name: Updating javac Version
+     #   alternatives:
+     #     name: javac
+     #     path: /usr/lib/jvm/java-{{java_version}}-openjdk.x86_64/bin/javac
+     #   tags:
+     #     - task-3
+     # - name: Creating Tomcat Group
+     #   group:
+     #     name: tomcat
+     # - name: Creating Tomcat user
+     #   user:
+     #     name: tomcat
+     #     group: tomcat
+     # - name: Dowloading tomcat
+     #   get_url:
+     #     url: http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v{{tomcat_version}}/bin/apache-tomcat-{{tomcat_version}}.tar.gz
+     #     dest: /opt/apache-tomcat-{{tomcat_version}}.tar.gz
+     # - name: Extracting Tomcat tar file
+     #   command: chdir=/usr/share tar xvzf /opt/apache-tomcat-{{tomcat_version}}.tar.gz -C /opt/ creates=/opt/apache-tomcat-{{tomcat_version}}
+     # - name: Symlink between repos
+     #   file:
+     #     src: /opt/apache-tomcat-{{tomcat_version}}
+     #     path: /usr/share/tomcat
+     #     state: link
+     # - name: Changing ownership of tomcat
+     #   file:
+     #     path: /usr/share/tomcat/
+     #     owner: tomcat
+     #     group: tomcat
+     #     state: directory
+     #     recurse: yes
+     # - name: coping script to init.d repo
+     #   copy:
+     #     src: ./tomcat.sh
+     #     dest: /etc/init.d/tomcat
+     #     mode: 0755
+     #   tags:
+     #     - tag-1
+     # - name: Sarting tomcat
+     #   service:
+     #     name: tomcat
+     #     state: started
+     #     enabled: yes
    #   - name: Coping war file to webapps folder
    #     copy:
    #       src: /codebuild/output/src237410577/src${CODEBUILD_SRC_DIR}/target/*.war.war
