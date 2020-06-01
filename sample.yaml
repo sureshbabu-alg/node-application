@@ -1,4 +1,7 @@
 version: 0.2
+env:
+  variables:
+    S3_BUCKET: "kannanbucket9823577"
 
 phases:
   install:
@@ -9,4 +12,16 @@ phases:
     commands:
       - pip install boto3
       - pip install awscli
+      - apt-get update
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - mvn --version
+      - python3 --version
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn clean package
+
 
