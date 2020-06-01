@@ -12,6 +12,7 @@ phases:
     commands:
       - pip install boto3
       - pip install awscli
+      - pip install mkdocs
       - apt-get update
   pre_build:
     commands:
