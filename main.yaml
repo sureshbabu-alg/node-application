@@ -23,12 +23,12 @@ Parameters:
 
   GitHubOwner:
     Type: String
-    Default: symphoniacloud
+    Default: suresh-devops
     AllowedPattern: "[A-Za-z0-9-]+"
 
   GitHubRepo:
     Type: String
-    Default: github-codepipeline
+    Default: node-application
     AllowedPattern: "[A-Za-z0-9-]+"
 
   GitHubBranch:
