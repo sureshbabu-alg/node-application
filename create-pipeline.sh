@@ -2,7 +2,7 @@
 
 # *** Change this to the desired name of the Cloudformation stack of
 # your Pipeline (*not* the stack name of your app)
-CODEPIPELINE_STACK_NAME="github-codepipeline"
+CODEPIPELINE_STACK_NAME="suresh-pipeline"
 
 if [ -z ${1} ]
 then
