@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# *** Change this to the desired name of the Cloudformation stack of 
+# *** Change this to the desired name of the Cloudformation stack of
 # your Pipeline (*not* the stack name of your app)
-CODEPIPELINE_STACK_NAME="github-codepipeline"
+CODEPIPELINE_STACK_NAME="suresh-pipeline"
 
 if [ -z ${1} ]
 then
@@ -14,7 +14,7 @@ fi
 set -eu
 
 aws cloudformation update-stack \
-        --capabilities CAPABILITY_IAM \
+        --capabilities CAPABILITY_IAM,CAPABILITY_NAMED_IAM \
         --stack-name $CODEPIPELINE_STACK_NAME \
         --parameters ParameterKey=GitHubOAuthToken,ParameterValue=${1} \
         --template-body file://pipeline.yaml
