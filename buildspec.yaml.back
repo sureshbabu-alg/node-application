@@ -1,0 +1,76 @@
+version: 0.2
+env:
+  variables:
+    S3_BUCKET: "kannanbucket9823577"
+# phases:
+#   install:
+#     runtime-versions:
+#       java: openjdk8   #For Ubuntu standard:4.0 its not supported for more details check "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html"
+#       python: 3.7
+#       nodejs: 10
+    commands:
+      - apt-get update
+      - apt install build-essential
+      - apt-get install -y manpages-dev
+      - apt-get install -y software-properties-common
+      - apt-add-repository --yes --update ppa:ansible/ansible
+      - apt-get install -y ansible
+      # - add-apt-repository ppa:openjdk-r/ppa
+      # - apt-get update
+      # - apt-get install -y openjdk-8-jdk
+      # - apt-get install -y --no-install-recommends ca-certificates-java
+      # - update-ca-certificates -f
+      # - dpkg --add-architecture i386
+      - apt-get update
+      - apt-get install -y --force-yes libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1 libqt5widgets5
+      - apt-get --assume-yes install zip maven
+      # - pip install --upgrade pip tox twine setuptools wheel coverage cython
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - mvn --version
+      - python3 --version
+      # - ansible --version
+      # - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      # - REPOSITORY_URI=690046498336.dkr.ecr.us-east-1.amazonaws.com/node-app
+      # - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      # - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+  build:
+    commands:
+      - echo Build started on `date`
+      # - echo Building the Docker image...
+      # # - docker build -t $REPOSITORY_URI:latest .
+      # # - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - mvn clean package
+      # - echo ${CODEBUILD_SOURCE_REPO_URL}
+      # - echo ${CODEBUILD_SRC_DIR}
+      - aws s3 cp ${CODEBUILD_SRC_DIR}/target/*.war s3://${S3_BUCKET}/artifacts/
+      - mv ${CODEBUILD_SRC_DIR}/target/*.war ${CODEBUILD_SRC_DIR}/target/myapp.war
+      # - make
+      # - aws s3 cp ${CODEBUILD_SRC_DIR}/lambda.zip s3://${S3_BUCKET}/zips/
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      # - echo Pushing the Docker images...
+      # - docker push $REPOSITORY_URI:latest
+      # - docker push $REPOSITORY_URI:$IMAGE_TAG
+      # - echo Writing image definitions file...
+      # - printf '[{"name":"nodeapp","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      # - cat imagedefinitions.json
+      - aws s3 cp s3://kannanbucket9823577/code_build.pem ${CODEBUILD_SRC_DIR}/ansible/code_build.pem
+      - chmod 400 ${CODEBUILD_SRC_DIR}/ansible/code_build.pem
+      - cd ${CODEBUILD_SRC_DIR}/ansible/
+      - ansible all -m ping
+      - ansible-playbook tomcat.yaml  #--extra-vars "java_version=1.8.0 tomcat_version=8.5.55"
+artifacts:
+    files:
+      # - template.yaml
+      # - lambda.zip
+      # - config.json
+      # - scripts/test_function.py
+      ## - target/*.war
+
+cache:
+  paths:
+    - '/root/.m2/**/*'
