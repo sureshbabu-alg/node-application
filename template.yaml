@@ -8,13 +8,6 @@ Parameters:
   RoleName:
     Type: String
     Default: "kannanasbdjs"
-  DummName:
-    Type: String
-    Default: "kannanasbdjs1"
-  DummName1:
-    Type: String
-    Default: "kannanasbdjs2"
-
 Resources:
   TestIAMRole:
     Type: 'AWS::IAM::Role'
@@ -39,59 +32,3 @@ Resources:
                 Action:
                   - '*'
                 Resource: '*'
-  IAMRole:
-    Type: 'AWS::IAM::Role'
-    Properties:
-      RoleName: !Ref DummName
-      AssumeRolePolicyDocument:
-        Version: 2012-10-17
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service:
-                - lambda.amazonaws.com
-            Action:
-              - 'sts:AssumeRole'
-      Path: /
-      Policies:
-        - PolicyName: root
-          PolicyDocument:
-            Version: 2012-10-17
-            Statement:
-              - Effect: Allow
-                Action:
-                  - '*'
-                Resource: '*'
-  IAMRole1:
-    Type: 'AWS::IAM::Role'
-    Properties:
-      RoleName: !Ref DummName1
-      AssumeRolePolicyDocument:
-        Version: 2012-10-17
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service:
-                - lambda.amazonaws.com
-            Action:
-              - 'sts:AssumeRole'
-      Path: /
-      Policies:
-        - PolicyName: root
-          PolicyDocument:
-            Version: 2012-10-17
-            Statement:
-              - Effect: Allow
-                Action:
-                  - '*'
-                Resource: '*'
-  Function:
-    Type: AWS::Lambda::Function
-    Properties:
-      Handler: test_function.lambda_handler
-      Role: !GetAtt TestIAMRole.Arn
-      Code:
-        S3Bucket: kannanbucket9823577
-        S3Key: zips/lambda.zip
-      Runtime: python3.6
-      Timeout: 100
