@@ -7,10 +7,13 @@ Description: "test"
 Parameters:
   RoleName:
     Type: String
+    Default: "kannanasbdjs"
   DummName:
     Type: String
+    Default: "kannanasbdjs1"
   DummName1:
     Type: String
+    Default: "kannanasbdjs2"
 
 Resources:
   TestIAMRole:
