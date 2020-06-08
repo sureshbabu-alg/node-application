@@ -164,7 +164,7 @@ Resources:
         # ComputeType options: BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE
         ComputeType: BUILD_GENERAL1_SMALL
         # Run `aws codebuild list-curated-environment-images` for a complete list of images provided.
-        Image: aws/codebuild/python
+        Image: aws/codebuild/standard:1.0
         EnvironmentVariables:
           - Name: BUILD_ARTIFACT_BUCKET
             Value: !Ref DeploymentArtifactBucket
