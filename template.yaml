@@ -3,16 +3,11 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: "test"
 Mappings:
-  ResourceTags:
-    "tag1":
-      key: "Name"
-      value: "Suresh"
-    "tag2":
-      key: "Mother"
-      value: "Manjula"
-    "tag3":
-      key: "Father"
-      value: "Sudhakar"
+  'Fn::Transform':
+    Name: AWS::Include
+    Parameters:
+      Location: 's3://mybucket-765578585/tags.yaml'
+
 Parameters:
   RoleName:
     Type: String

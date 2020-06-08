@@ -1,4 +1,10 @@
-- Key: "Name"
-  Value: "test"
-- Key: "Env"
-  Value: "dev"
+ResourceTags:
+  tag1:
+    key: Name
+    value: Suresh
+  tag2:
+    key: Mother
+    value: Manjula
+  tag3:
+    key: Father
+    value: Sudhakar
