@@ -12,6 +12,9 @@ phases:
     commands:
       # - pip install boto3
       - pip install awscli
+      - pip install -U wheel
+      - pip install -r requirements.txt
+      - pip install -U botocore
       # - pip install mkdocs
       # - apt-get update
   pre_build:
@@ -23,6 +26,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
+      - cfn-lint template.yaml
       # - mvn clean package
   post_build:
     commands:
