@@ -9,13 +9,13 @@ ResourceTags:
     value: 'KMSKey.KMSKey.ads'
   tag2:
     key: 'suresh:babu:fp'
-    value: 'a'
+    value: '-'
   tag3:
     key: 'suresh:babu:env'
     value: 'KMSKey.prd'
   tag4:
     key: 'suresh:babu:ID'
-    value: 'b'
+    value: '-'
 
 Parameters:
   RoleName:
@@ -49,11 +49,11 @@ Resources:
         - Key: !FindInMap [ ResourceTags, tag1, key]
           Value: !FindInMap [ ResourceTags, tag1, value]
         - Key: !FindInMap [ ResourceTags, tag2, key]
-          Value: Ref: AWS::NoValue
+          Value: !FindInMap [ ResourceTags, tag2, value]
         - Key: !FindInMap [ ResourceTags, tag3, key]
           Value: !FindInMap [ ResourceTags, tag3, value]
         - Key: !FindInMap [ ResourceTags, tag4, key]
-          Value: Ref: AWS::NoValue
+          Value: !FindInMap [ ResourceTags, tag4, value]
   KMSKey:
     Type: AWS::KMS::Key
     Properties:
@@ -78,11 +78,11 @@ Resources:
         - Key: !FindInMap [ ResourceTags, tag1, key]
           Value: !FindInMap [ ResourceTags, tag1, value]
         - Key: !FindInMap [ ResourceTags, tag2, key]
-          Value: Ref: AWS::NoValue
+          Value: !FindInMap [ ResourceTags, tag2, value]
         - Key: !FindInMap [ ResourceTags, tag3, key]
           Value: !FindInMap [ ResourceTags, tag3, value]
         - Key: !FindInMap [ ResourceTags, tag4, key]
-          Value: Ref: AWS::NoValue
+          Value: !FindInMap [ ResourceTags, tag4, value]
   AliasS3:
     Type: AWS::KMS::Alias
     Properties:
@@ -104,11 +104,11 @@ Resources:
         - Key: !FindInMap [ ResourceTags, tag1, key]
           Value: !FindInMap [ ResourceTags, tag1, value]
         - Key: !FindInMap [ ResourceTags, tag2, key]
-          Value: Ref: AWS::NoValue
+          Value: !FindInMap [ ResourceTags, tag2, value]
         - Key: !FindInMap [ ResourceTags, tag3, key]
           Value: !FindInMap [ ResourceTags, tag3, value]
         - Key: !FindInMap [ ResourceTags, tag4, key]
-          Value: Ref: AWS::NoValue
+          Value: !FindInMap [ ResourceTags, tag4, value]
   CloudFormationStackGroupForAnotherStack:
     Type: "AWS::ResourceGroups::Group"
     Properties:
