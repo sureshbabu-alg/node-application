@@ -11,6 +11,8 @@ phases:
       # nodejs: 10
     commands:
       # - pip install boto3
+      - apt-get update -qq
+      - apt-get install zip -qq
       - pip install awscli
       - pip install -U wheel
       - pip install -r requirements.txt
