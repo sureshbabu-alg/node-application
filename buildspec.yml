@@ -8,12 +8,12 @@ phases:
     runtime-versions:
       java: openjdk8   #For Ubuntu standard:4.0 its not supported for more details check "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html"
       python: 3.8
-      nodejs: 10
+      # nodejs: 10
     commands:
-      - pip install boto3
+      # - pip install boto3
       - pip install awscli
-      - pip install mkdocs
-      - apt-get update
+      # - pip install mkdocs
+      # - apt-get update
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
