@@ -1,2 +1,5 @@
-suresh:work:shop:
-  - test.test1.test2
+---
+    - Key: "Name"
+      Value: "test"
+    - Key: "Env"
+      Value: "dev"

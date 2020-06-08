@@ -22,8 +22,8 @@ Resources:
             Action:
               - 'sts:AssumeRole'
       Tags:
-        Fn::Transform:
-          Name: AWS::Include
+        'Fn::Transform':
+          Name: 'AWS::Include'
           Parameters:
             Location: s3://mybucket-765578585/tags.yaml
       Path: /
