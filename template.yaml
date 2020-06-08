@@ -21,10 +21,6 @@ Resources:
                 - lambda.amazonaws.com
             Action:
               - 'sts:AssumeRole'
-    'Fn::Transform':
-      Name: 'AWS::Include'
-      Parameters:
-        Location: s3://mybucket-765578585/tags.yaml
       Path: /
       Policies:
         - PolicyName: root
@@ -35,6 +31,10 @@ Resources:
                 Action:
                   - '*'
                 Resource: '*'
+      'Fn::Transform':
+        Name: 'AWS::Include'
+        Parameters:
+          Location: s3://mybucket-765578585/tags.yaml
   KMSKey:
     Type: AWS::KMS::Key
     Properties:
