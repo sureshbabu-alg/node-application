@@ -25,7 +25,7 @@ Resources:
       'Fn::Transform':
         Name: AWS::Include
         Parameters:
-          Location: 's3://mybucket-765578585/ads_tags.yaml'
+          Location: 's3://mybucket-765578585/tags.yaml'
       Path: /
       Policies:
         - PolicyName: root
@@ -36,3 +36,44 @@ Resources:
                 Action:
                   - '*'
                 Resource: '*'
+  KMSKey:
+    Type: AWS::KMS::Key
+    Properties:
+      Description: "test"
+      Enabled: true
+      EnableKeyRotation: true
+      KeyPolicy:
+        Id: test-policy
+        Version: '2012-10-17'
+        Statement:
+          - Sid: Enable IAM User Permissions
+            Effect: Allow
+            Principal:
+              AWS: !Sub "arn:aws:iam::${AWS::AccountId}:root"
+            Action: kms:*
+            Resource: "*"
+      'Fn::Transform':
+        Name: AWS::Include
+        Parameters:
+          Location: 's3://mybucket-765578585/tags.yaml'
+  AliasS3:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: alias/test-s3
+      TargetKeyId: !Ref KMSKey
+
+  TestBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              KMSMasterKeyID: !Ref KMSKey
+              SSEAlgorithm: "aws:kms"
+      BucketName: bvjhsabvjhsbvhjsbvhj-63267476
+      'Fn::Transform':
+        Name: AWS::Include
+        Parameters:
+          Location: 's3://mybucket-765578585/tags.yaml'
