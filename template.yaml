@@ -3,10 +3,19 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: "test"
 Mappings:
-  'Fn::Transform':
-    Name: 'AWS::Include'
-    Parameters:
-      Location: 's3://mybucket-765578585/tags.yaml'
+ResourceTags:
+  tag1:
+    key: 'suresh:babu:component'
+    value: 'KMSKey.KMSKey.ads'
+  tag2:
+    key: 'suresh:babu:fp'
+    value: ''
+  tag3:
+    key: 'suresh:babu:env'
+    value: 'KMSKey.prd'
+  tag4:
+    key: 'suresh:babu:ID'
+    value: ''
 
 Parameters:
   RoleName:
@@ -43,6 +52,8 @@ Resources:
           Value: !FindInMap [ ResourceTags, tag2, value]
         - Key: !FindInMap [ ResourceTags, tag3, key]
           Value: !FindInMap [ ResourceTags, tag3, value]
+        - Key: !FindInMap [ ResourceTags, tag4, key]
+          Value: !FindInMap [ ResourceTags, tag4, value]
   KMSKey:
     Type: AWS::KMS::Key
     Properties:
@@ -70,6 +81,8 @@ Resources:
           Value: !FindInMap [ ResourceTags, tag2, value]
         - Key: !FindInMap [ ResourceTags, tag3, key]
           Value: !FindInMap [ ResourceTags, tag3, value]
+        - Key: !FindInMap [ ResourceTags, tag4, key]
+          Value: !FindInMap [ ResourceTags, tag4, value]
   AliasS3:
     Type: AWS::KMS::Alias
     Properties:
@@ -94,6 +107,8 @@ Resources:
           Value: !FindInMap [ ResourceTags, tag2, value]
         - Key: !FindInMap [ ResourceTags, tag3, key]
           Value: !FindInMap [ ResourceTags, tag3, value]
+        - Key: !FindInMap [ ResourceTags, tag4, key]
+          Value: !FindInMap [ ResourceTags, tag4, value]
   CloudFormationStackGroupForAnotherStack:
     Type: "AWS::ResourceGroups::Group"
     Properties:

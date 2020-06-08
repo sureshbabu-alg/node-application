@@ -1,10 +1,13 @@
 ResourceTags:
   tag1:
-    key: Name
-    value: Suresh
+    key: 'suresh:billing:component'
+    value: 'KMSKey.KMSKey.ads'
   tag2:
-    key: Mother
-    value: Manjula
+    key: 'suresh:billing:fp'
+    value: ''
   tag3:
-    key: Father
-    value: Sudhakar
+    key: 'suresh:billing:env'
+    value: 'KMSKey.prd'
+  tag4:
+    key: 'suresh:billing:ID'
+    value: ''
