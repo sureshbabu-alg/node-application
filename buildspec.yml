@@ -27,7 +27,7 @@ phases:
     commands:
       - echo Build started on `date`
       - aws s3 cp ./tags.yaml s3://mybucket-765578585/tags.yaml
-      - cfn-lint template.yaml
+      # - cfn-lint template.yaml
       # - mvn clean package
   post_build:
     commands:
