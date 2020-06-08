@@ -3,7 +3,11 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: "test"
 
-
+Mappings:
+  'Fn::Transform':
+    Name: AWS::Include
+    Parameters:
+      Location : s3://mybucket-765578585/tags.yaml
 Parameters:
   RoleName:
     Type: String
@@ -22,11 +26,10 @@ Resources:
                 - lambda.amazonaws.com
             Action:
               - 'sts:AssumeRole'
-      Tags:
-        Fn::Transform:
-          Name: AWS::Include
-          Parameters:
-            Location: s3://mybucket-765578585/tags.yaml
+      Fn::Transform:
+        Name: AWS::Include
+        Parameters:
+          Location: s3://mybucket-765578585/tags.yaml
       Path: /
       Policies:
         - PolicyName: root
