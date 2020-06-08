@@ -31,10 +31,10 @@ Resources:
                 Action:
                   - '*'
                 Resource: '*'
-      'Fn::Transform':
+      Transform:
         Name: 'AWS::Include'
         Parameters:
-          Location: s3://mybucket-765578585/tags.yaml
+          Location: 's3://mybucket-765578585/tags.yaml'
   KMSKey:
     Type: AWS::KMS::Key
     Properties:
