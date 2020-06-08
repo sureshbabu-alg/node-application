@@ -1,8 +1,4 @@
-- Key: "Name"
-  Value: "abc"
-- Key: "env"
-  Value: "dev"
-- Key: "location"
-  Value: "bangalore"
-- Key: "country"
-  Value: "india"
+{
+  "Key": "Name",
+  "Value": "Test"
+}
