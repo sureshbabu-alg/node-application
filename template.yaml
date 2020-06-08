@@ -44,7 +44,7 @@ Resources:
       Tags:
         - Key: !FindInMap [ ResourceTags, tag1, key]
           Value: !FindInMap [ ResourceTags, tag1, value]
-        - Key: !FindInMap [ ResourceTags, tag12, key]
+        - Key: !FindInMap [ ResourceTags, tag2, key]
           Value: !FindInMap [ ResourceTags, tag2, value]
         - Key: !FindInMap [ ResourceTags, tag3, key]
           Value: !FindInMap [ ResourceTags, tag3, value]
@@ -71,7 +71,7 @@ Resources:
       Tags:
         - Key: !FindInMap [ ResourceTags, tag1, key]
           Value: !FindInMap [ ResourceTags, tag1, value]
-        - Key: !FindInMap [ ResourceTags, tag12, key]
+        - Key: !FindInMap [ ResourceTags, tag2, key]
           Value: !FindInMap [ ResourceTags, tag2, value]
         - Key: !FindInMap [ ResourceTags, tag3, key]
           Value: !FindInMap [ ResourceTags, tag3, value]
@@ -95,7 +95,7 @@ Resources:
       Tags:
         - Key: !FindInMap [ ResourceTags, tag1, key]
           Value: !FindInMap [ ResourceTags, tag1, value]
-        - Key: !FindInMap [ ResourceTags, tag12, key]
+        - Key: !FindInMap [ ResourceTags, tag2, key]
           Value: !FindInMap [ ResourceTags, tag2, value]
         - Key: !FindInMap [ ResourceTags, tag3, key]
           Value: !FindInMap [ ResourceTags, tag3, value]
