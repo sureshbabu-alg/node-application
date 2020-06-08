@@ -21,11 +21,10 @@ Resources:
                 - lambda.amazonaws.com
             Action:
               - 'sts:AssumeRole'
-      Tags:
-        'Fn::Transform':
-          Name: 'AWS::Include'
-          Parameters:
-            Location: s3://mybucket-765578585/tags.yaml
+    'Fn::Transform':
+      Name: 'AWS::Include'
+      Parameters:
+        Location: s3://mybucket-765578585/tags.yaml
       Path: /
       Policies:
         - PolicyName: root
