@@ -4,7 +4,7 @@ Transform: AWS::Serverless-2016-10-31
 Description: "test"
 Mappings:
   'Fn::Transform':
-    Name: AWS::Include
+    Name: 'AWS::Include'
     Parameters:
       Location: 's3://mybucket-765578585/tags.yaml'
 
