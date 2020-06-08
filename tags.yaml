@@ -1,7 +1,7 @@
 Tags:
   - Key: "Name"
     Value: "abc"
-  - Key: "env"
+  - Key: !Sub "env-${AWS::AccountId}"
     Value: "dev"
   - Key: "location"
     Value: "bangalore"
