@@ -9,13 +9,13 @@ ResourceTags:
     value: 'KMSKey.KMSKey.ads'
   tag2:
     key: 'suresh:babu:fp'
-    value: ''
+    value: Ref: AWS::NoValue
   tag3:
     key: 'suresh:babu:env'
     value: 'KMSKey.prd'
   tag4:
     key: 'suresh:babu:ID'
-    value: ''
+    value: Ref: AWS::NoValue
 
 Parameters:
   RoleName:
