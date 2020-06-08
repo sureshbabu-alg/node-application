@@ -22,7 +22,7 @@ Resources:
                 - lambda.amazonaws.com
             Action:
               - 'sts:AssumeRole'
-      'Fn::Transform':
+      Fn::Transform:
         Name: AWS::Include
         Parameters:
           Location: 's3://mybucket-765578585/tags.yaml'
@@ -52,10 +52,10 @@ Resources:
               AWS: !Sub "arn:aws:iam::${AWS::AccountId}:root"
             Action: kms:*
             Resource: "*"
-      'Fn::Transform':
-        Name: AWS::Include
-        Parameters:
-          Location: 's3://mybucket-765578585/tags.yaml'
+      # 'Fn::Transform':
+      #   Name: AWS::Include
+      #   Parameters:
+      #     Location: 's3://mybucket-765578585/tags.yaml'
   AliasS3:
     Type: AWS::KMS::Alias
     Properties:
@@ -73,7 +73,7 @@ Resources:
               KMSMasterKeyID: !Ref KMSKey
               SSEAlgorithm: "aws:kms"
       BucketName: bvjhsabvjhsbvhjsbvhj-63267476
-      'Fn::Transform':
-        Name: AWS::Include
-        Parameters:
-          Location: 's3://mybucket-765578585/tags.yaml'
+      # 'Fn::Transform':
+      #   Name: AWS::Include
+      #   Parameters:
+      #     Location: 's3://mybucket-765578585/tags.yaml'
