@@ -1,13 +1,6 @@
-ResourceTags:
-  tag1:
-    key: 'suresh:billing:component'
-    value: 'KMSKey.KMSKey.ads'
-  tag2:
-    key: 'suresh:billing:fp'
-    value: ''
-  tag3:
-    key: 'suresh:billing:env'
-    value: 'KMSKey.prd'
-  tag4:
-    key: 'suresh:billing:ID'
-    value: ''
+---
+  Tags:
+    - Key: "Name"
+      Value: "test"
+    - Key: "Env"
+      Value: "dev"
