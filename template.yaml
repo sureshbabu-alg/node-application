@@ -73,17 +73,3 @@ Resources:
               KMSMasterKeyID: !Ref KMSKey
               SSEAlgorithm: "aws:kms"
       BucketName: bvjhsabvjhsbvhjsbvhj-63267476
-  CloudFormationStackGroupForAnotherStack:
-    Type: "AWS::ResourceGroups::Group"
-    Properties:
-      Name: "MyCloudFormationResourceGroupForAnotherStack"
-      Description: "A group that is created via CFN"
-      ResourceQuery:
-        Type: "CLOUDFORMATION_STACK_1_0"
-        Query:
-          ResourceTypeFilters:
-            - "AWS::AllSupported"
-          StackIdentifier: "arn:aws:cloudformation:us-east-1:690046498336:stack/suresh-pipeline/db3a8160-a94a-11ea-bea2-12b44143da02"
-      Tags:
-        - Key: "Mot"
-          Value: "Man"
