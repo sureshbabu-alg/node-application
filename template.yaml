@@ -35,6 +35,10 @@ Resources:
                 Action:
                   - '*'
                 Resource: '*'
+      'Fn::Transform':
+        Name: AWS::Include
+        Parameters:
+          Location: 's3://mybucket-765578585/tags.yaml'
   KMSKey:
     Type: AWS::KMS::Key
     Properties:
@@ -73,3 +77,7 @@ Resources:
               KMSMasterKeyID: !Ref KMSKey
               SSEAlgorithm: "aws:kms"
       BucketName: bvjhsabvjhsbvhjsbvhj-63267476
+      'Fn::Transform':
+        Name: AWS::Include
+        Parameters:
+          Location: 's3://mybucket-765578585/tags.yaml'
