@@ -18,4 +18,3 @@ aws cloudformation update-stack \
         --stack-name $CODEPIPELINE_STACK_NAME \
         --parameters ParameterKey=GitHubOAuthToken,ParameterValue=${1} \
         --template-body file://pipeline.yaml
-#
