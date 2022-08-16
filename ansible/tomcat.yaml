@@ -25,8 +25,8 @@
          group: tomcat
      - name: Dowloading tomcat
        get_url:
-         url: http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v{{tomcat_version}}/bin/apache-tomcat-{{tomcat_version}}.tar.gz
-         dest: /opt/apache-tomcat-{{tomcat_version}}.tar.gz
+         url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.82/bin/apache-tomcat-8.5.82.tar.gz
+         dest: /opt/apache-tomcat-8.5.82.tar.gz
      - name: Extracting Tomcat tar file
        command: chdir=/usr/share tar xvzf /opt/apache-tomcat-{{tomcat_version}}.tar.gz -C /opt/ creates=/opt/apache-tomcat-{{tomcat_version}}
      - name: Symlink between repos
