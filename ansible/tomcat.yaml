@@ -61,12 +61,12 @@
          name: tomcat
          state: started
          enabled: yes
-#      - name: Coping war file to webapps folder
-#        copy:
-#          src: ../target/myapp.war
-#          dest: /usr/share/tomcat/webapps/app.war
-#        notify:
-#          - Restarting tomcat Server
+     - name: Coping war file to webapps folder
+       copy:
+         src: /var/lib/jenkins/workspace/test123/target/myapp.war
+         dest: /usr/share/tomcat/webapps/app.war
+       notify:
+         - Restarting tomcat Server
    handlers:
      - name: Restarting tomcat Server
        service:
