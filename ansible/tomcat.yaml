@@ -8,14 +8,14 @@
        yum:
          name: java-{{java_version}}-openjdk-devel
          state: present
-     - name: Updating java Version
-       alternatives:
-         name: java
-         path: /usr/lib/jvm/jre-{{java_version}}-openjdk.x86_64/bin/java
-     - name: Updating javac Version
-       alternatives:
-         name: javac
-         path: /usr/lib/jvm/java-{{java_version}}-openjdk.x86_64/bin/javac
+     # - name: Updating java Version
+     #   alternatives:
+     #     name: java
+     #     path: /usr/lib/jvm/jre-{{java_version}}-openjdk.x86_64/bin/java
+     # - name: Updating javac Version
+     #   alternatives:
+     #     name: javac
+     #     path: /usr/lib/jvm/java-{{java_version}}-openjdk.x86_64/bin/javac
      - name: Creating Tomcat Group
        group:
          name: tomcat
